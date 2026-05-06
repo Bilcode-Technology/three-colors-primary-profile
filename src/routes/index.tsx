@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import React, { useState } from "react";
 import { z } from "zod";
 import {
   ArrowRight,
@@ -181,7 +181,7 @@ function About() {
 
 function VisiMisi() {
   const highlight = (text: string, words: string[]) => {
-    let result: (string | JSX.Element)[] = [text];
+    let result: (string | React.ReactNode)[] = [text];
     words.forEach((w, i) => {
       result = result.flatMap((part) =>
         typeof part === "string"
