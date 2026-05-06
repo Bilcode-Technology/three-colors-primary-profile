@@ -35,8 +35,6 @@ export const Route = createRootRoute({
       { property: "og:title", content: "PT Tiga Warna Primer" },
       { property: "og:description", content: "Produsen pewarna tekstil & bahan kimia berkualitas tinggi." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

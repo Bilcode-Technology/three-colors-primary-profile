@@ -555,11 +555,7 @@ function Footer() {
     <footer className="border-t border-border py-12 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-2 font-display font-bold">
-          <span className="flex gap-0.5">
-            <span className="w-2 h-5 rounded-sm bg-brand-red" />
-            <span className="w-2 h-5 rounded-sm bg-brand-yellow" />
-            <span className="w-2 h-5 rounded-sm bg-brand-blue" />
-          </span>
+          <img src="/src/assets/logo.jpeg" alt="Logo Perusahaan" className="h-[30px]" />
           <span>PT Tiga Warna Primer</span>
         </div>
         <p className="text-sm text-muted-foreground">
