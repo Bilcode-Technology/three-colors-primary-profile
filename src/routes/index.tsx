@@ -180,24 +180,30 @@ function About() {
 }
 
 function VisiMisi() {
-  const highlight = (text: string, words: string[]) => {
-    let result: (string | React.ReactNode)[] = [text];
+  const highlight = (text: string, words: string[]): React.ReactNode[] => {
+    let parts: React.ReactNode[] = [text];
     words.forEach((w, i) => {
-      result = result.flatMap((part) =>
-        typeof part === "string"
-          ? part.split(new RegExp(`(${w})`, "i")).map((p, j) =>
-              p.toLowerCase() === w.toLowerCase() ? (
-                <span key={`${i}-${j}`} className="font-semibold text-foreground">
-                  {p}
-                </span>
-              ) : (
-                p
-              )
-            )
-          : [part]
-      );
+      const next: React.ReactNode[] = [];
+      parts.forEach((part, k) => {
+        if (typeof part !== "string") {
+          next.push(part);
+          return;
+        }
+        part.split(new RegExp(`(${w})`, "i")).forEach((p, j) => {
+          if (p.toLowerCase() === w.toLowerCase()) {
+            next.push(
+              <span key={`${i}-${k}-${j}`} className="font-semibold text-foreground">
+                {p}
+              </span>
+            );
+          } else if (p) {
+            next.push(p);
+          }
+        });
+      });
+      parts = next;
     });
-    return result;
+    return parts;
   };
 
   return (
