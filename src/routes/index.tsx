@@ -25,7 +25,7 @@ import { Reveal } from "@/components/Reveal";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import buildingImg from "@/assets/building.jpg";
-import factoryImg from "@/assets/factory.jpg";
+import factoryImg from "@/assets/factory.png";
 import disperseImg from "@/assets/disperse.jpg";
 import reaktifImg from "@/assets/reaktif.jpg";
 import acidImg from "@/assets/acid.jpg";
