@@ -489,10 +489,19 @@ function Kontak() {
               <div className="rounded-2xl overflow-hidden border border-border h-64">
                 <iframe
                   title="Lokasi PT Tiga Warna Primer"
-                  src="https://maps.google.com/maps?q=Jl.%20Imam%20Bonjol%20No.%20133%2C%20Karawaci%2C%20Tangerang&t=m&z=15&output=embed"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.4834476657875!2d106.61590699678953!3d-6.199771499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ff5113cc7c3b%3A0xe5cdd55e635a8c80!2sHead%20Office%20PT%20Tiga%20Warna%20Primer!5e0!3m2!1sid!2sid!4v1778187429034!5m2!1sid!2sid"
                   className="w-full h-full border-0"
                   loading="lazy"
                 />
+                {/* <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.4834476657875!2d106.61590699678953!3d-6.199771499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ff5113cc7c3b%3A0xe5cdd55e635a8c80!2sHead%20Office%20PT%20Tiga%20Warna%20Primer!5e0!3m2!1sid!2sid!4v1778187429034!5m2!1sid!2sid" 
+                width="600" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade" 
+                /> */}
               </div>
             </div>
           </Reveal>
