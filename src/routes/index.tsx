@@ -319,7 +319,7 @@ function Proses() {
           title="Lima tahap presisi dari ide hingga produk sampai ke pelanggan."
         />
         <div className="relative">
-          <div className="hidden lg:block absolute top-7 left-[10%] right-[10%] h-px bg-gradient-to-r from-brand-red via-brand-yellow to-brand-blue" />
+          <div className="hidden lg:block absolute top-7 left-[0%] right-[15%] h-px bg-gradient-to-r from-brand-red via-brand-yellow to-brand-blue" />
           <div className="grid lg:grid-cols-5 gap-10 lg:gap-6">
             {steps.map((s, i) => (
               <Reveal key={s.title} delay={i * 100}>
@@ -403,7 +403,7 @@ function Kekuatan() {
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-xl mb-2 flex items-center gap-2">
-                    <CheckCircle2 size={18} className="text-brand-blue" />
+                    {/* <CheckCircle2 size={18} className="text-brand-blue" /> */}
                     {it.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">{it.desc}</p>
@@ -460,7 +460,7 @@ function Kontak() {
                 <div>
                   <div className="font-semibold mb-1">Alamat</div>
                   <p className="text-sm text-muted-foreground">
-                    Jl. Imam Bonjol No. 133, Karawaci, Tangerang, Banten 15115
+                    Ruko Victoria Park Blok A2/23, Karawaci, Kec. Karawaci, Kota Tangerang, Banten 15115
                   </p>
                 </div>
               </div>
