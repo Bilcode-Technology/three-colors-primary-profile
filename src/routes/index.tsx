@@ -31,6 +31,15 @@ import reaktifImg from "@/assets/reaktif.jpg";
 import acidImg from "@/assets/acid.jpg";
 import liquidImg from "@/assets/liquid.jpg";
 import logoImg from "@/assets/logo.jpeg";
+import reaktifPdf from "@/assets/612cbf3f-df16-4788-8204-fbe746c9539c-halaman.pdf";
+import dispersePdf from "@/assets/Catalogue Disperse Fix.pdf";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { FileText, Eye } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -344,11 +353,32 @@ function Proses() {
 
 function Produk() {
   const products = [
-    { img: disperseImg, name: "Pewarna Disperse", desc: "Khusus serat sintetis seperti polyester. Hasil tajam, merata, tahan pencucian dan suhu tinggi." },
-    { img: reaktifImg, name: "Pewarna Reaktif", desc: "Ikatan kimia kuat dengan serat selulosa untuk warna tahan lama dan cerah." },
-    { img: acidImg, name: "Pewarna Acid", desc: "Ideal untuk wool, nylon, dan silk. Hasil halus dengan ketahanan warna baik." },
-    { img: liquidImg, name: "Liquid", desc: "Solusi praktis: mudah diaplikasikan, mengurangi debu, efisien dalam skala produksi." },
+    { 
+      img: disperseImg, 
+      name: "Pewarna Disperse", 
+      desc: "Khusus serat sintetis seperti polyester. Hasil tajam, merata, tahan pencucian dan suhu tinggi.",
+      pdf: dispersePdf
+    },
+    { 
+      img: reaktifImg, 
+      name: "Pewarna Reaktif", 
+      desc: "Ikatan kimia kuat dengan serat selulosa untuk warna tahan lama dan cerah.",
+      pdf: reaktifPdf
+    },
+    { 
+      img: acidImg, 
+      name: "Pewarna Acid", 
+      desc: "Ideal untuk wool, nylon, dan silk. Hasil halus dengan ketahanan warna baik." 
+    },
+    { 
+      img: liquidImg, 
+      name: "Liquid", 
+      desc: "Solusi praktis: mudah diaplikasikan, mengurangi debu, efisien dalam skala produksi." 
+    },
   ];
+
+  const [selectedPdf, setSelectedPdf] = useState<string | null>(null);
+  const [selectedName, setSelectedName] = useState<string>("");
   return (
     <section id="produk" className="py-28 px-6 lg:px-8 bg-secondary/40">
       <div className="max-w-7xl mx-auto">
@@ -369,12 +399,47 @@ function Produk() {
                 </div>
                 <div className="p-6 flex-1 flex flex-col">
                   <h3 className="font-display font-bold text-lg mb-2">{p.name}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6">{p.desc}</p>
+                  
+                  {p.pdf && (
+                    <div className="mt-auto">
+                      <button
+                        onClick={() => {
+                          setSelectedPdf(p.pdf || null);
+                          setSelectedName(p.name);
+                        }}
+                        className="inline-flex items-center gap-2 text-sm font-medium text-brand-red hover:text-brand-red/80 transition-colors"
+                      >
+                        <Eye size={16} />
+                        Lihat Detail Katalog
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             </Reveal>
           ))}
         </div>
+
+        <Dialog open={!!selectedPdf} onOpenChange={(open) => !open && setSelectedPdf(null)}>
+          <DialogContent className="max-w-4xl w-[90vw] h-[90vh] p-0 overflow-hidden flex flex-col">
+            <DialogHeader className="p-4 border-b">
+              <DialogTitle className="flex items-center gap-2">
+                <FileText className="text-brand-red" size={20} />
+                Katalog {selectedName}
+              </DialogTitle>
+            </DialogHeader>
+            <div className="flex-1 bg-muted">
+              {selectedPdf && (
+                <iframe
+                  src={`${selectedPdf}#toolbar=0`}
+                  className="w-full h-full border-0"
+                  title={`Katalog ${selectedName}`}
+                />
+              )}
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );
