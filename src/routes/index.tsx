@@ -233,7 +233,7 @@ function VisiMisi() {
         part.split(new RegExp(`(${w})`, "i")).forEach((p, j) => {
           if (p.toLowerCase() === w.toLowerCase()) {
             next.push(
-              <span key={`${i}-${k}-${j}`} className="font-semibold text-foreground">
+              <span key={`${i}-${k}-${j}`} className="font-bold bg-gradient-to-r from-brand-red via-brand-yellow to-brand-blue bg-clip-text text-transparent">
                 {p}
               </span>
             );
