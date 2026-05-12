@@ -26,11 +26,13 @@ import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import buildingImg from "@/assets/building.jpg";
 import factoryImg from "@/assets/factory.png";
-import disperseImg from "@/assets/disperse.jpg";
+import disperseImg from "@/assets/disperse.jpeg";
 import reaktifImg from "@/assets/reaktif.jpg";
 import acidImg from "@/assets/acid.jpg";
 import liquidImg from "@/assets/liquid.jpg";
 import logoImg from "@/assets/logo.jpeg";
+import logo1 from "@/assets/logo 1.png";
+import logo2 from "@/assets/logo 2.png";
 import reaktifPdf from "@/assets/612cbf3f-df16-4788-8204-fbe746c9539c-halaman.pdf";
 import dispersePdf from "@/assets/Catalogue Disperse Fix.pdf";
 import {
@@ -39,7 +41,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { FileText, Eye } from "lucide-react";
+import { FileText, Eye, ArrowUpRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -130,6 +132,35 @@ function Hero() {
                 alt="Kantor PT Tiga Warna Primer"
                 className="relative rounded-3xl shadow-2xl w-full object-cover aspect-[4/5]"
               />
+
+              {/* Floating Badges */}
+              <div className="absolute -bottom-8 -left-4 sm:-left-10 z-20">
+                <Reveal delay={600}>
+                  <div className="bg-background/90 backdrop-blur-xl p-3 sm:p-4 rounded-2xl shadow-2xl border border-border flex items-center gap-3 sm:gap-4 hover:scale-105 transition-transform duration-300">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-brand-red/10 flex items-center justify-center p-2">
+                      <img src={logo1} alt="Quality Logo" className="w-full h-full object-contain" />
+                    </div>
+                    <div>
+                      <div className="text-[10px] font-bold uppercase tracking-widest text-brand-red leading-none mb-1">Quality</div>
+                      <div className="text-xs sm:text-sm font-bold">Standard</div>
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
+
+              <div className="absolute -top-3 -right-4 sm:right-12 z-20">
+                <Reveal delay={800}>
+                  <div className="bg-background/90 backdrop-blur-xl p-3 sm:p-4 rounded-2xl shadow-2xl border border-border flex items-center gap-3 sm:gap-4 hover:scale-105 transition-transform duration-300">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center p-2">
+                      <img src={logo2} alt="Partner Logo" className="w-full h-full object-contain" />
+                    </div>
+                    <div>
+                      <div className="text-[10px] font-bold uppercase tracking-widest text-brand-blue leading-none mb-1">Trusted</div>
+                      <div className="text-xs sm:text-sm font-bold">Partner</div>
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
             </div>
           </Reveal>
         </div>
@@ -353,27 +384,27 @@ function Proses() {
 
 function Produk() {
   const products = [
-    { 
-      img: disperseImg, 
-      name: "Pewarna Disperse", 
+    {
+      img: disperseImg,
+      name: "Pewarna Disperse",
       desc: "Khusus serat sintetis seperti polyester. Hasil tajam, merata, tahan pencucian dan suhu tinggi.",
       pdf: dispersePdf
     },
-    { 
-      img: reaktifImg, 
-      name: "Pewarna Reaktif", 
+    {
+      img: reaktifImg,
+      name: "Pewarna Reaktif",
       desc: "Ikatan kimia kuat dengan serat selulosa untuk warna tahan lama dan cerah.",
       pdf: reaktifPdf
     },
-    { 
-      img: acidImg, 
-      name: "Pewarna Acid", 
-      desc: "Ideal untuk wool, nylon, dan silk. Hasil halus dengan ketahanan warna baik." 
+    {
+      img: acidImg,
+      name: "Pewarna Acid",
+      desc: "Ideal untuk wool, nylon, dan silk. Hasil halus dengan ketahanan warna baik."
     },
-    { 
-      img: liquidImg, 
-      name: "Liquid", 
-      desc: "Solusi praktis: mudah diaplikasikan, mengurangi debu, efisien dalam skala produksi." 
+    {
+      img: liquidImg,
+      name: "Printing dan Dyeing Auxiliary",
+      desc: "Solusi praktis: mudah diaplikasikan, mengurangi debu, efisien dalam skala produksi."
     },
   ];
 
@@ -389,32 +420,37 @@ function Produk() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((p, i) => (
             <Reveal key={p.name} delay={i * 80}>
-              <div className="group bg-background rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300 h-full flex flex-col">
-                <div className="aspect-square overflow-hidden">
-                  <img
-                    src={p.img}
-                    alt={p.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="font-display font-bold text-lg mb-2">{p.name}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-6">{p.desc}</p>
-                  
-                  {p.pdf && (
-                    <div className="mt-auto">
-                      <button
-                        onClick={() => {
-                          setSelectedPdf(p.pdf || null);
-                          setSelectedName(p.name);
-                        }}
-                        className="inline-flex items-center gap-2 text-sm font-medium text-brand-red hover:text-brand-red/80 transition-colors"
-                      >
-                        <Eye size={16} />
-                        Lihat Detail Katalog
-                      </button>
+              <div
+                onClick={() => {
+                  if (p.pdf) {
+                    setSelectedPdf(p.pdf);
+                    setSelectedName(p.name);
+                  } else {
+                    toast.info(`Katalog untuk ${p.name} akan segera tersedia.`);
+                  }
+                }}
+                className="group relative aspect-square rounded-3xl overflow-hidden bg-muted border border-border/50 shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer"
+              >
+                <img
+                  src={p.img}
+                  alt={p.name}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+
+                <div className="absolute inset-0 p-7 flex flex-col justify-end">
+                  <div className="flex items-end justify-between gap-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-display font-bold text-xl text-white mb-2 leading-tight">{p.name}</h3>
+                      <p className="text-sm text-white/70 line-clamp-2 leading-relaxed mb-1">{p.desc}</p>
                     </div>
-                  )}
+
+                    {p.pdf && (
+                      <div className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-brand-red hover:text-white transition-all duration-300 shadow-xl flex-shrink-0">
+                        <ArrowUpRight size={22} />
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -425,7 +461,7 @@ function Produk() {
           <DialogContent className="max-w-4xl w-[90vw] h-[90vh] p-0 overflow-hidden flex flex-col">
             <DialogHeader className="p-4 border-b">
               <DialogTitle className="flex items-center gap-2">
-                <FileText className="text-brand-red" size={20} />
+                {/* <FileText className="text-brand-red" size={20} /> */}
                 Katalog {selectedName}
               </DialogTitle>
             </DialogHeader>
