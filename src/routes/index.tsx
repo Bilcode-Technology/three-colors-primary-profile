@@ -140,6 +140,9 @@ function Hero() {
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-brand-red/10 flex items-center justify-center p-2">
                       <img src={logo1} alt="Quality Logo" className="w-full h-full object-contain" />
                     </div>
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center p-2">
+                      <img src={logo2} alt="Partner Logo" className="w-full h-full object-contain" />
+                    </div>
                     <div>
                       <div className="text-[10px] font-bold uppercase tracking-widest text-brand-red leading-none mb-1">Quality</div>
                       <div className="text-xs sm:text-sm font-bold">Standard</div>
@@ -148,7 +151,7 @@ function Hero() {
                 </Reveal>
               </div>
 
-              <div className="absolute -top-3 -right-4 sm:right-12 z-20">
+              {/* <div className="absolute -top-3 -right-4 sm:right-12 z-20">
                 <Reveal delay={800}>
                   <div className="bg-background/90 backdrop-blur-xl p-3 sm:p-4 rounded-2xl shadow-2xl border border-border flex items-center gap-3 sm:gap-4 hover:scale-105 transition-transform duration-300">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center p-2">
@@ -160,7 +163,7 @@ function Hero() {
                     </div>
                   </div>
                 </Reveal>
-              </div>
+              </div> */}
             </div>
           </Reveal>
         </div>
