@@ -134,13 +134,13 @@ function Hero() {
               />
 
               {/* Floating Badges */}
-              <div className="absolute -bottom-8 -left-4 sm:-left-10 z-20">
+              <div className="absolute -bottom-8 -left-4 sm:-left-10 z-20 animate-float">
                 <Reveal delay={600}>
                   <div className="bg-background/90 backdrop-blur-xl p-3 sm:p-4 rounded-2xl shadow-2xl border border-border flex items-center gap-3 sm:gap-4 hover:scale-105 transition-transform duration-300">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-brand-red/10 flex items-center justify-center p-2">
+                    <div className="w-20 h-20 rounded-xl bg-brand-red/10 flex items-center justify-center p-2">
                       <img src={logo1} alt="Quality Logo" className="w-full h-full object-contain" />
                     </div>
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center p-2">
+                    <div className="w-20 h-20 rounded-xl bg-brand-blue/10 flex items-center justify-center p-2">
                       <img src={logo2} alt="Partner Logo" className="w-full h-full object-contain" />
                     </div>
                     <div>
