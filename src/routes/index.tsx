@@ -26,17 +26,11 @@ import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import buildingImg from "@/assets/building.jpg";
 import factoryImg from "@/assets/factory.png";
-import disperseImg from "@/assets/disperse.jpeg";
-import reaktifImg from "@/assets/reaktif.jpg";
-import acidImg from "@/assets/acid.jpg";
-import liquidImg from "@/assets/liquid.jpg";
 import logoImg from "@/assets/logo.jpeg";
 import logo1 from "@/assets/logo 1.png";
 import logo2 from "@/assets/logo 2.png";
-import reaktifPdf from "@/assets/612cbf3f-df16-4788-8204-fbe746c9539c-halaman.pdf";
-import dispersePdf from "@/assets/Catalogue Disperse Fix.pdf";
 
-import { FileText, Eye, ArrowUpRight } from "lucide-react";
+import { FileText, Eye } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -58,7 +52,6 @@ function Index() {
       <Nilai />
       <Simbolisme />
       <Proses />
-      <Produk />
       <Kekuatan />
       <Kontak />
       <Footer />
@@ -109,7 +102,7 @@ function Hero() {
                 Pelajari Lebih Lanjut <ArrowRight size={18} />
               </a>
               <a
-                href="#produk"
+                href="/produk"
                 className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 backdrop-blur px-7 py-3.5 font-medium hover:bg-background transition"
               >
                 Lihat Produk
@@ -380,83 +373,6 @@ function Proses() {
   );
 }
 
-function Produk() {
-  const products = [
-    {
-      img: disperseImg,
-      name: "Pewarna Disperse",
-      desc: "Khusus serat sintetis seperti polyester. Hasil tajam, merata, tahan pencucian dan suhu tinggi.",
-      pdf: dispersePdf
-    },
-    {
-      img: reaktifImg,
-      name: "Pewarna Reaktif",
-      desc: "Ikatan kimia kuat dengan serat selulosa untuk warna tahan lama dan cerah.",
-      pdf: reaktifPdf
-    },
-    {
-      img: acidImg,
-      name: "Pewarna Acid",
-      desc: "Ideal untuk wool, nylon, dan silk. Hasil halus dengan ketahanan warna baik."
-    },
-    {
-      img: liquidImg,
-      name: "Printing dan Dyeing Auxiliary",
-      desc: "Solusi praktis: mudah diaplikasikan, mengurangi debu, efisien dalam skala produksi."
-    },
-  ];
-
-  return (
-    <section id="produk" className="py-28 px-6 lg:px-8 bg-secondary/40">
-      <div className="max-w-7xl mx-auto">
-        <SectionHeader
-          eyebrow="Kategori Produk"
-          title="Rangkaian pewarna untuk setiap kebutuhan tekstil Anda."
-        />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((p, i) => (
-            <Reveal key={p.name} delay={i * 80}>
-              <div
-                onClick={() => {
-                  if (p.pdf) {
-                    window.open(p.pdf, '_blank');
-                  } else {
-                    toast.info(`Katalog untuk ${p.name} akan segera tersedia.`);
-                  }
-                }}
-                className="group relative aspect-square rounded-3xl overflow-hidden bg-muted border border-border/50 shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer"
-              >
-                <img
-                  src={p.img}
-                  alt={p.name}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
-
-                <div className="absolute inset-0 p-7 flex flex-col justify-end">
-                  <div className="flex items-end justify-between gap-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-display font-bold text-xl text-white mb-2 leading-tight">{p.name}</h3>
-                      <p className="text-sm text-white/70 line-clamp-2 leading-relaxed mb-1">{p.desc}</p>
-                    </div>
-
-                    {p.pdf && (
-                      <div className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-brand-red hover:text-white transition-all duration-300 shadow-xl flex-shrink-0">
-                        <ArrowUpRight size={22} />
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-
-      </div>
-    </section>
-  );
-}
 
 function Kekuatan() {
   const items = [
