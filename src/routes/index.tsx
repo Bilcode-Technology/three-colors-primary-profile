@@ -35,12 +35,7 @@ import logo1 from "@/assets/logo 1.png";
 import logo2 from "@/assets/logo 2.png";
 import reaktifPdf from "@/assets/612cbf3f-df16-4788-8204-fbe746c9539c-halaman.pdf";
 import dispersePdf from "@/assets/Catalogue Disperse Fix.pdf";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+
 import { FileText, Eye, ArrowUpRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -411,8 +406,6 @@ function Produk() {
     },
   ];
 
-  const [selectedPdf, setSelectedPdf] = useState<string | null>(null);
-  const [selectedName, setSelectedName] = useState<string>("");
   return (
     <section id="produk" className="py-28 px-6 lg:px-8 bg-secondary/40">
       <div className="max-w-7xl mx-auto">
@@ -426,8 +419,7 @@ function Produk() {
               <div
                 onClick={() => {
                   if (p.pdf) {
-                    setSelectedPdf(p.pdf);
-                    setSelectedName(p.name);
+                    window.open(p.pdf, '_blank');
                   } else {
                     toast.info(`Katalog untuk ${p.name} akan segera tersedia.`);
                   }
@@ -460,25 +452,7 @@ function Produk() {
           ))}
         </div>
 
-        <Dialog open={!!selectedPdf} onOpenChange={(open) => !open && setSelectedPdf(null)}>
-          <DialogContent className="max-w-4xl w-[90vw] h-[90vh] p-0 overflow-hidden flex flex-col">
-            <DialogHeader className="p-4 border-b">
-              <DialogTitle className="flex items-center gap-2">
-                {/* <FileText className="text-brand-red" size={20} /> */}
-                Katalog {selectedName}
-              </DialogTitle>
-            </DialogHeader>
-            <div className="flex-1 bg-muted">
-              {selectedPdf && (
-                <iframe
-                  src={`${selectedPdf}#toolbar=0`}
-                  className="w-full h-full border-0"
-                  title={`Katalog ${selectedName}`}
-                />
-              )}
-            </div>
-          </DialogContent>
-        </Dialog>
+
       </div>
     </section>
   );

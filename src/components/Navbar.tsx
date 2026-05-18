@@ -2,13 +2,21 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import logoImg from "@/assets/logo.jpeg";
 
+import { toast } from "sonner";
+import reaktifPdf from "@/assets/612cbf3f-df16-4788-8204-fbe746c9539c-halaman.pdf";
+import dispersePdf from "@/assets/Catalogue Disperse Fix.pdf";
+
 const links = [
-  { href: "#tentang", label: "Tentang" },
-  { href: "#visi-misi", label: "Visi & Misi" },
-  { href: "#nilai", label: "Nilai" },
-  { href: "#proses", label: "Proses" },
-  { href: "#produk", label: "Produk" },
-  { href: "#kontak", label: "Kontak" },
+  { href: "/#tentang", label: "Tentang" },
+  { href: "/#visi-misi", label: "Visi & Misi" },
+  { href: "/#nilai", label: "Nilai" },
+  { href: "/#proses", label: "Proses" },
+  { isProduct: true, pdf: dispersePdf, name: "Pewarna Disperse", label: "Disperse" },
+  { isProduct: true, pdf: reaktifPdf, name: "Pewarna Reaktif", label: "Reaktif" },
+  { isProduct: true, pdf: null, name: "Pewarna Acid", label: "Acid" },
+  { href: "/karir", label: "Karir" },
+  { href: "/berita", label: "Berita" },
+  { href: "/#kontak", label: "Kontak" },
 ];
 
 export function Navbar() {
@@ -27,21 +35,37 @@ export function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : "bg-transparent"}`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a href="#hero" className="flex items-center gap-2 font-display font-bold text-lg">
+        <a href="/#hero" className="flex items-center gap-2 font-display font-bold text-lg">
           <img src={logoImg} alt="Logo Perusahaan" className="h-[30px]" />
           <span className="tracking-tight">Tiga Warna Primer</span>
         </a>
 
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="hover:text-foreground transition-colors">
-              {l.label}
-            </a>
+            l.isProduct ? (
+              <button
+                key={l.label}
+                onClick={() => {
+                  if (l.pdf) {
+                    window.open(l.pdf, '_blank');
+                  } else {
+                    toast.info(`Katalog untuk ${l.name} akan segera tersedia.`);
+                  }
+                }}
+                className="hover:text-foreground transition-colors cursor-pointer text-left"
+              >
+                {l.label}
+              </button>
+            ) : (
+              <a key={l.label} href={l.href} className="hover:text-foreground transition-colors">
+                {l.label}
+              </a>
+            )
           ))}
         </nav>
 
         <a
-          href="#kontak"
+          href="/#kontak"
           className="hidden md:inline-flex items-center rounded-full bg-foreground text-background px-5 py-2 text-sm font-medium hover:opacity-90 transition"
         >
           Hubungi Kami
@@ -56,9 +80,26 @@ export function Navbar() {
         <div className="md:hidden bg-background border-b border-border">
           <nav className="flex flex-col px-6 py-4 gap-3 text-sm">
             {links.map((l) => (
-              <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="py-1.5 text-muted-foreground">
-                {l.label}
-              </a>
+              l.isProduct ? (
+                <button
+                  key={l.label}
+                  onClick={() => {
+                    setOpen(false);
+                    if (l.pdf) {
+                      window.open(l.pdf, '_blank');
+                    } else {
+                      toast.info(`Katalog untuk ${l.name} akan segera tersedia.`);
+                    }
+                  }}
+                  className="py-1.5 text-muted-foreground text-left"
+                >
+                  {l.label}
+                </button>
+              ) : (
+                <a key={l.label} href={l.href} onClick={() => setOpen(false)} className="py-1.5 text-muted-foreground">
+                  {l.label}
+                </a>
+              )
             ))}
           </nav>
         </div>
