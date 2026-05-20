@@ -30,13 +30,15 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
         <a href="/#hero" className="flex items-center gap-2 font-display font-bold text-lg">
-          <img src={logoImg} alt="Logo Perusahaan" className="h-[30px]" />
-          <span className="tracking-tight">Tiga Warna Primer</span>
+          <img src={logoImg} alt="Logo Perusahaan" className="h-[30px] rounded-sm" />
+          <span className={`tracking-tight transition-colors duration-300 ${scrolled ? "text-foreground" : "text-white"}`}>
+            Tiga Warna Primer
+          </span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
+        <nav className={`hidden md:flex items-center gap-8 text-sm font-medium transition-colors duration-300 ${scrolled ? "text-muted-foreground" : "text-white/80"}`}>
           {links.map((l) => (
-            <a key={l.label} href={l.href} className="hover:text-foreground transition-colors">
+            <a key={l.label} href={l.href} className={`transition-colors duration-300 ${scrolled ? "hover:text-foreground" : "hover:text-white"}`}>
               {l.label}
             </a>
           ))}
@@ -44,12 +46,16 @@ export function Navbar() {
 
         <a
           href="/#kontak"
-          className="hidden md:inline-flex items-center rounded-full bg-foreground text-background px-5 py-2 text-sm font-medium hover:opacity-90 transition"
+          className={`hidden md:inline-flex items-center rounded-full px-5 py-2 text-sm font-medium transition-all duration-300 ${
+            scrolled
+              ? "bg-foreground text-background hover:opacity-90"
+              : "bg-white text-black hover:bg-white/90 shadow-md"
+          }`}
         >
           Hubungi Kami
         </a>
 
-        <button className="md:hidden" onClick={() => setOpen(!open)} aria-label="Menu">
+        <button className={`md:hidden transition-colors duration-300 ${scrolled ? "text-foreground" : "text-white"}`} onClick={() => setOpen(!open)} aria-label="Menu">
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>

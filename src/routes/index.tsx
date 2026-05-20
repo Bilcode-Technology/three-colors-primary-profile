@@ -19,16 +19,20 @@ import {
   Zap,
   Palette,
   FileBadge,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Reveal } from "@/components/Reveal";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import buildingImg from "@/assets/building.jpg";
+import slide2Img from "@/assets/slide 2.jpeg";
 import factoryImg from "@/assets/factory.png";
 import logoImg from "@/assets/logo.jpeg";
 import logo1 from "@/assets/logo 1.png";
 import logo2 from "@/assets/logo 2.png";
+import logo3 from "@/assets/logo 3.jpeg";
 
 import { FileText, Eye } from "lucide-react";
 
@@ -61,25 +65,61 @@ function Index() {
 }
 
 function Hero() {
+  const slides = [
+    {
+      img: buildingImg,
+      alt: "Kantor PT Tiga Warna Primer",
+    },
+    {
+      img: slide2Img,
+      alt: "Operasional PT Tiga Warna Primer",
+    },
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden pt-16">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary" />
-        <div className="absolute -top-32 -left-20 w-[500px] h-[500px] rounded-full bg-brand-red/15 blur-[120px]" />
-        <div className="absolute top-40 right-0 w-[420px] h-[420px] rounded-full bg-brand-yellow/20 blur-[120px]" />
-        <div className="absolute bottom-0 left-1/3 w-[460px] h-[460px] rounded-full bg-brand-blue/15 blur-[120px]" />
+      {/* Full-Screen Slider Background */}
+      <div className="absolute inset-0 z-0 w-full h-full overflow-hidden bg-black">
+        {slides.map((slide, idx) => (
+          <img
+            key={idx}
+            src={slide.img}
+            alt={slide.alt}
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${idx === currentSlide ? "opacity-100 scale-100 z-10" : "opacity-0 scale-105 z-0"
+              }`}
+          />
+        ))}
+        {/* Dark Gradient Overlay for optimal readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/35 z-10" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 grid lg:grid-cols-12 gap-12 items-center w-full">
-        <div className="lg:col-span-7">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-32 grid lg:grid-cols-12 gap-12 items-center w-full relative z-20">
+        <div className="lg:col-span-8">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 backdrop-blur px-4 py-1.5 text-xs font-medium text-muted-foreground mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-red" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 backdrop-blur px-4 py-1.5 text-xs font-medium text-white/90 mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow animate-pulse" />
               Produsen Pewarna Tekstil — Tangerang, Indonesia
             </div>
           </Reveal>
           <Reveal delay={100}>
-            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight">
+            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-white">
               Menciptakan Warna,
               <br />
               <span className="bg-gradient-to-r from-brand-red via-brand-yellow to-brand-blue bg-clip-text text-transparent">
@@ -88,7 +128,7 @@ function Hero() {
             </h1>
           </Reveal>
           <Reveal delay={200}>
-            <p className="mt-8 text-lg text-muted-foreground max-w-xl leading-relaxed">
+            <p className="mt-8 text-lg text-white/80 max-w-2xl leading-relaxed">
               PT Tiga Warna Primer adalah perusahaan manufaktur pewarna dan bahan kimia yang menghadirkan
               solusi presisi, andal, dan berkelanjutan untuk industri pewarnaan tekstil.
             </p>
@@ -97,13 +137,13 @@ function Hero() {
             <div className="mt-10 flex flex-wrap gap-4">
               <a
                 href="#tentang"
-                className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-7 py-3.5 font-medium hover:opacity-90 transition"
+                className="inline-flex items-center gap-2 rounded-full bg-white text-black hover:bg-white/90 px-7 py-3.5 font-medium transition shadow-lg"
               >
                 Pelajari Lebih Lanjut <ArrowRight size={18} />
               </a>
               <a
                 href="/produk"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 backdrop-blur px-7 py-3.5 font-medium hover:bg-background transition"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur px-7 py-3.5 font-medium text-white hover:bg-white/20 transition"
               >
                 Lihat Produk
               </a>
@@ -111,50 +151,55 @@ function Hero() {
           </Reveal>
         </div>
 
-        <div className="lg:col-span-5">
-          <Reveal delay={300}>
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-tr from-brand-red/20 via-brand-yellow/20 to-brand-blue/20 rounded-3xl blur-2xl" />
-              <img
-                src={buildingImg}
-                alt="Kantor PT Tiga Warna Primer"
-                className="relative rounded-3xl shadow-2xl w-full object-cover aspect-[4/5]"
-              />
-
-              {/* Floating Badges */}
-              <div className="absolute -bottom-8 -left-4 sm:-left-10 z-20 animate-float">
-                <Reveal delay={600}>
-                  <div className="bg-background/90 backdrop-blur-xl p-3 sm:p-4 rounded-2xl shadow-2xl border border-border flex items-center gap-3 sm:gap-4 hover:scale-105 transition-transform duration-300">
-                    <div className="w-20 h-20 rounded-xl bg-brand-red/10 flex items-center justify-center p-2">
-                      <img src={logo1} alt="Quality Logo" className="w-full h-full object-contain" />
-                    </div>
-                    <div className="w-20 h-20 rounded-xl bg-brand-blue/10 flex items-center justify-center p-2">
-                      <img src={logo2} alt="Partner Logo" className="w-full h-full object-contain" />
-                    </div>
-                    <div>
-                      <div className="text-[10px] font-bold uppercase tracking-widest text-brand-red leading-none mb-1">Quality</div>
-                      <div className="text-xs sm:text-sm font-bold">Standard</div>
-                    </div>
-                  </div>
-                </Reveal>
+        <div className="lg:col-span-4 flex justify-center lg:justify-end">
+          <div className="animate-float">
+            <Reveal delay={600}>
+              <div className="bg-white/10 backdrop-blur-xl p-5 rounded-3xl shadow-2xl border border-white/10 flex items-center gap-4 hover:scale-105 transition-transform duration-300">
+                <div className="w-16 h-16 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
+                  <img src={logo1} alt="Quality Logo" className="w-full h-full object-contain" />
+                </div>
+                <div className="w-16 h-16 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
+                  <img src={logo3} alt="Quality Logo" className="w-full h-full object-contain" />
+                </div>
+                <div className="w-16 h-16 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
+                  <img src={logo2} alt="Partner Logo" className="w-full h-full object-contain" />
+                </div>
+                <div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-brand-yellow leading-none mb-1">Quality</div>
+                  <div className="text-xs sm:text-sm font-bold text-white">Standard</div>
+                </div>
               </div>
-
-              {/* <div className="absolute -top-3 -right-4 sm:right-12 z-20">
-                <Reveal delay={800}>
-                  <div className="bg-background/90 backdrop-blur-xl p-3 sm:p-4 rounded-2xl shadow-2xl border border-border flex items-center gap-3 sm:gap-4 hover:scale-105 transition-transform duration-300">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center p-2">
-                      <img src={logo2} alt="Partner Logo" className="w-full h-full object-contain" />
-                    </div>
-                    <div>
-                      <div className="text-[10px] font-bold uppercase tracking-widest text-brand-blue leading-none mb-1">Trusted</div>
-                      <div className="text-xs sm:text-sm font-bold">Partner</div>
-                    </div>
-                  </div>
-                </Reveal>
-              </div> */}
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
+      </div>
+
+      {/* Manual Slider Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center justify-center transition-all cursor-pointer hover:scale-105"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft size={24} />
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center justify-center transition-all cursor-pointer hover:scale-105"
+        aria-label="Next slide"
+      >
+        <ChevronRight size={24} />
+      </button>
+
+      {/* Dot Indicators */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-2">
+        {slides.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrentSlide(idx)}
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${idx === currentSlide ? "bg-white w-6" : "bg-white/40 hover:bg-white/60"}`}
+            aria-label={`Go to slide ${idx + 1}`}
+          />
+        ))}
       </div>
     </section>
   );
