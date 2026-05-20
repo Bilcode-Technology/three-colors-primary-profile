@@ -155,13 +155,13 @@ function Hero() {
           <div className="animate-float">
             <Reveal delay={600}>
               <div className="bg-white/10 backdrop-blur-xl p-5 rounded-3xl shadow-2xl border border-white/10 flex items-center gap-4 hover:scale-105 transition-transform duration-300">
-                <div className="w-16 h-16 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
+                <div className="w-20 h-20 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
                   <img src={logo1} alt="Quality Logo" className="w-full h-full object-contain" />
                 </div>
-                <div className="w-16 h-16 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
+                <div className="w-20 h-20 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
                   <img src={logo3} alt="Quality Logo" className="w-full h-full object-contain" />
                 </div>
-                <div className="w-16 h-16 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
+                <div className="w-20 h-20 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
                   <img src={logo2} alt="Partner Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
