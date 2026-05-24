@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import disperseImg from "@/assets/disperse.jpeg";
 import reaktifImg from "@/assets/reaktif.jpg";
-import acidImg from "@/assets/acid.jpg";
+import acidImg from "@/assets/acid.jpeg";
 import liquidImg from "@/assets/liquid.jpg";
 import dispersePdf from "@/assets/Catalogue Disperse Fix.pdf";
 import reaktifPdf from "@/assets/612cbf3f-df16-4788-8204-fbe746c9539c-halaman.pdf";

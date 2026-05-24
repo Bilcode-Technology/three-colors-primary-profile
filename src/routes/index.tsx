@@ -509,8 +509,8 @@ function Kontak() {
                 </div>
                 <div>
                   <div className="font-semibold mb-1">Telepon</div>
-                  <a href="tel:+6285136035632" className="text-sm text-muted-foreground hover:text-foreground">
-                    +62 851 3603 5632
+                  <a href="tel:+6285212102608" className="text-sm text-muted-foreground hover:text-foreground">
+                    +62 852-1210-2608
                   </a>
                 </div>
               </div>
