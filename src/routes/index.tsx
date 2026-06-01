@@ -33,6 +33,7 @@ import logoImg from "@/assets/logo.jpeg";
 import logo1 from "@/assets/logo 1.png";
 import logo2 from "@/assets/logo 2.png";
 import logo3 from "@/assets/logo 3.jpeg";
+import logo4 from "@/assets/logo 4.png";
 
 import { FileText, Eye } from "lucide-react";
 
@@ -179,19 +180,26 @@ function Hero() {
         <div className="lg:col-span-4 flex justify-center lg:justify-end">
           <div className="animate-float">
             <Reveal delay={600}>
-              <div className="bg-white/10 backdrop-blur-xl p-5 rounded-3xl shadow-2xl border border-white/10 flex items-center gap-4 hover:scale-105 transition-transform duration-300">
+              <div className="bg-white/10 backdrop-blur-xl p-5 rounded-3xl shadow-2xl border border-white/10 flex flex-col items-center gap-4 hover:scale-105 transition-transform duration-300">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="w-20 h-20 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
+                    <img src={logo3} alt="Quality Logo" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="w-20 h-20 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
+                    <img src={logo2} alt="Partner Logo" className="w-full h-full object-contain" />
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
                 <div className="w-20 h-20 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
                   <img src={logo1} alt="Quality Logo" className="w-full h-full object-contain" />
                 </div>
                 <div className="w-20 h-20 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
-                  <img src={logo3} alt="Quality Logo" className="w-full h-full object-contain" />
-                </div>
-                <div className="w-20 h-20 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
-                  <img src={logo2} alt="Partner Logo" className="w-full h-full object-contain" />
+                  <img src={logo4} alt="Quality Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <div className="text-[10px] font-bold uppercase tracking-widest text-brand-yellow leading-none mb-1">Quality</div>
                   <div className="text-xs sm:text-sm font-bold text-white">Standard</div>
+                </div>
                 </div>
               </div>
             </Reveal>
