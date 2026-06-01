@@ -49,7 +49,7 @@ function ProdukPage() {
     },
     {
       img: liquidImg,
-      name: "Printing dan Dyeing Auxiliary",
+      name: "Nano Disperse",
       desc: "Solusi praktis: mudah diaplikasikan, mengurangi debu, efisien dalam skala produksi."
     },
   ];

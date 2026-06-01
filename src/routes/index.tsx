@@ -46,7 +46,12 @@ const contactSchema = z.object({
   message: z.string().trim().min(1, "Pesan wajib diisi").max(1000),
 });
 
+import posterImg from "@/assets/poster.jpeg";
+import { X } from "lucide-react";
+
 function Index() {
+  const [showModal, setShowModal] = useState(true);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
@@ -60,6 +65,26 @@ function Index() {
       <Kontak />
       <Footer />
       <Toaster richColors position="top-center" />
+
+      {/* Poster Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className="relative max-w-sm w-full animate-in zoom-in-95 duration-300">
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute -top-4 -right-4 z-10 w-10 h-10 bg-white rounded-full flex items-center justify-center text-black shadow-lg hover:scale-105 transition-transform"
+              aria-label="Close modal"
+            >
+              <X size={20} />
+            </button>
+            <img 
+              src={posterImg} 
+              alt="Poster Promosi" 
+              className="w-full h-auto rounded-xl shadow-2xl object-contain max-h-[90vh]"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

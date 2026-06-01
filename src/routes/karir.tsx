@@ -7,9 +7,10 @@ export const Route = createFileRoute("/karir")({
 
 function Karir() {
   const jobs = [
-    { title: "Staff R&D", type: "Full Time", location: "Tangerang" },
-    { title: "Operator Produksi", type: "Full Time", location: "Tangerang" },
-    { title: "Sales Executive", type: "Full Time", location: "Jakarta" },
+    { title: "Sales", type: "Full Time", location: "Tangerang" },
+    { title: "Quality Control", type: "Full Time", location: "Tangerang" },
+    { title: "Purchasing Lokal", type: "Full Time", location: "Tangerang" },
+    { title: "Penerjemahan Mandarin", type: "Full Time", location: "Tangerang" },
   ];
 
   return (
@@ -22,6 +23,8 @@ function Karir() {
           <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight leading-tight">Bergabung Bersama Kami</h1>
           <p className="mt-5 text-lg text-muted-foreground leading-relaxed max-w-2xl">
             Kami selalu mencari talenta terbaik untuk berkembang bersama PT Tiga Warna Primer. Temukan peluang karir yang sesuai dengan passion Anda.
+            <br/><br/>
+            <strong>Silakan langsung hubungi kami dan kirim CV Anda melalui WhatsApp ke nomor: <a href="https://wa.me/6285136035632" target="_blank" className="text-brand-blue hover:underline">+62 851-3603-5632</a></strong>
           </p>
         </div>
 
@@ -36,9 +39,9 @@ function Karir() {
                   <span>{job.location}</span>
                 </div>
               </div>
-              <button className="rounded-full bg-foreground text-background px-6 py-2.5 text-sm font-medium hover:opacity-90 transition">
-                Lamar Sekarang
-              </button>
+              <a href="https://wa.me/6285136035632" target="_blank" className="rounded-full bg-foreground text-background px-6 py-2.5 text-sm font-medium hover:opacity-90 transition inline-flex items-center justify-center">
+                Kirim CV (WhatsApp)
+              </a>
             </div>
           ))}
         </div>
