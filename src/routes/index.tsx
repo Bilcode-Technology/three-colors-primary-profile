@@ -185,20 +185,20 @@ function Hero() {
                   <div className="w-20 h-20 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
                     <img src={logo3} alt="Quality Logo" className="w-full h-full object-contain" />
                   </div>
-                  <div className="w-20 h-20 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
-                    <img src={logo2} alt="Partner Logo" className="w-full h-full object-contain" />
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                <div className="w-20 h-20 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
-                  <img src={logo1} alt="Quality Logo" className="w-full h-full object-contain" />
-                </div>
                 <div className="w-20 h-20 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
                   <img src={logo4} alt="Quality Logo" className="w-full h-full object-contain" />
                 </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-24 h-24 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
+                    <img src={logo2} alt="Partner Logo" className="w-full h-full object-contain" />
+                  </div>
+                <div className="w-24 h-24 rounded-2xl bg-white/95 flex items-center justify-center p-2 shadow-inner">
+                  <img src={logo1} alt="Quality Logo" className="w-full h-full object-contain" />
+                </div>
                 <div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-brand-yellow leading-none mb-1">Quality</div>
-                  <div className="text-xs sm:text-sm font-bold text-white">Standard</div>
+                  <div className="text-md font-bold uppercase tracking-widest text-brand-yellow leading-none mb-1">Quality</div>
+                  <div className="text-md font-bold text-white">Standard</div>
                 </div>
                 </div>
               </div>
